@@ -66,7 +66,9 @@ with response_container:
         for i in range(len(st.session_state['generated'])):
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
             message(st.session_state["generated"][i], key=str(i))
-            
+
+# ---------------------------Response------------------------------------------------
+
 import streamlit as st
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import time
@@ -105,7 +107,7 @@ if user_input:
 # Display the user input prompt
 st.text_area("User Prompt", value=user_input, height=100)
 
-https://chat.openai.com/share/94495184-6ce3-443d-b397-d94e74fabeb3
+# https://chat.openai.com/share/94495184-6ce3-443d-b397-d94e74fabeb3
     
 import streamlit as st
 import hug
