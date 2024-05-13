@@ -38,10 +38,28 @@ def get_text():
 with input_container:
     user_input = get_text()
 # Log in to huggingface and grant authorization to huggingchat
-cookies = Login(email, passwd).login()
+# Hugging Face Credentials
+with st.sidebar:
+    st.title('🤗💬 HugChat')
+    if ('EMAIL' in st.secrets) and ('PASS' in st.secrets):
+        st.success('HuggingFace Login credentials already provided!', icon='✅')
+        hf_email = st.secrets['EMAIL']
+        hf_pass = st.secrets['PASS']
+    else:
+        hf_email = st.text_input('Enter E-mail:', type='password')
+        hf_pass = st.text_input('Enter password:', type='password')
+        if not (hf_email and hf_pass):
+            st.warning('Please enter your credentials!', icon='⚠️')
+        else:
+            st.success('Proceed to entering your prompt message!', icon='👉')
+    st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-an-llm-powered-chatbot-with-streamlit/)!')
+
+sign = Login(hf_email, hf_pass).login()
+cookies = sign.login()
 
 # Save cookies to usercookies/<email>.json
 sign.saveCookies()
+
 # Response output
 ## Function for taking user prompt as input followed by producing AI generated responses
 def generate_response(prompt):
