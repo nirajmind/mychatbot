@@ -67,8 +67,6 @@ with response_container:
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
             message(st.session_state["generated"][i], key=str(i))
             
-            
-  ---------------Response--------
 import streamlit as st
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import time
