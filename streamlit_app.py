@@ -9,7 +9,7 @@ st.set_page_config(page_title="HugChat - An LLM-powered Streamlit app")
 
 # Sidebar contents
 with st.sidebar:
-    st.title('🤗💬 HugChat App')
+    st.title('🤗💬 MyChat App')
     st.markdown('''
     ## About
     This app is an LLM-powered chatbot built using:
@@ -20,7 +20,7 @@ with st.sidebar:
     💡 Note: No API key required!
     ''')
     add_vertical_space(5)
-    st.write('Made with ❤️ by [Jagadeesha](https://www.linkedin.com/in/jagadeesha-gowda-6a30382b)')
+    st.write('Made with ❤️ by [Niraj]')
 
 # Generate empty lists for generated and past.
 ## generated stores AI generated responses
@@ -44,10 +44,7 @@ def get_text():
 with input_container:
     user_input = get_text()
 # Log in to huggingface and grant authorization to huggingchat
-email =
-passwd =
-sign = Login(email, passwd)
-cookies = sign.login()
+cookies = Login(email, passwd).login()
 
 # Save cookies to usercookies/<email>.json
 sign.saveCookies()
